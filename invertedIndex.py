@@ -41,32 +41,43 @@ def parseCollection(coll):
       pageTitle eg. ('In the Middle of Nowhere.'), 
       pageText eg. ('In early 80s Freud done something unexpectedly, obviously')
     '''
-    #current page
-    doc = []
-
-    #search for the end of the page and add it to doc
-    for line in coll:
-        if line == '<\page>':
-            break
-        doc.append(line)
-    
-    currPage = ''.join(doc)
-    
-    #p stands for current page
-
-    pid=re.search('<id>(.*?)</id>', currPage, re.DOTALL)
-    ptitle=re.search('<title>(.*?)</title>', currPage, re.DOTALL)
-    ptext=re.search('<text>(.*?)</text>', currPage, re.DOTALL)
-
     #dictionary with keys: id, title and text eg.
     #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
-    parsedPage = {}
+    parsedPages = {}
+    
+    parsedPages['id'] = list()
+    parsedPages['title'] = list()
+    parsedPages['text'] = list()
 
-    parsedPage['id'] = pid.group(1)
-    parsedPage['title'] = ptitle.group(1)
-    parsedPage['text'] = ptext.group(1)
+    articles = re.split('<page> (.*?) </page>', coll, re.DOTALL)
+    articles = [string for string in articles if string != '' and string != ' ']#re.search('<page> (.*?) </page>', coll, re.DOTALL).group()
+    print(articles)
+    # 
+    for article in articles:
+        #current page
+        doc = []
 
-    return parsedPage
+        #search for the end of the page and add it to doc
+        for line in article:
+            if line == '<\page>':
+                break
+            doc.append(line)
+
+        currPage = ''.join(doc)
+
+        #p stands for current page
+        pid=re.search('<id>(.*?)</id>', currPage, re.DOTALL)
+        ptitle=re.search('<title>(.*?)</title>', currPage, re.DOTALL)
+        ptext=re.search('<text>(.*?)</text>', currPage, re.DOTALL)
+
+        #dictionary with keys: id, title and text eg.
+        #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
+
+        parsedPages['id'].append(pid.group(1))
+        parsedPages['title'].append(ptitle.group(1))
+        parsedPages['text'].append(ptext.group(1))
+
+    return parsedPages
     
 #<page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
 
@@ -116,3 +127,7 @@ def createIndex(coll):
     print(f'invertedIndex {invertedIndex}')
 
     return articleId, tokensPos
+
+#createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page>')
+
+print(parseCollection('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page> <page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>'))
