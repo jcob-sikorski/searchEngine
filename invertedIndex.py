@@ -43,41 +43,42 @@ def parseCollection(coll):
     '''
     #dictionary with keys: id, title and text eg.
     #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
-    parsedPages = {}
-    
-    parsedPages['id'] = list()
-    parsedPages['title'] = list()
-    parsedPages['text'] = list()
+    parsedPage = {}
 
-    articles = re.split('<page> (.*?) </page>', coll, re.DOTALL)
-    articles = [string for string in articles if string != '' and string != ' ']#re.search('<page> (.*?) </page>', coll, re.DOTALL).group()
-    print(articles)
+    parsedPage['id'] = list()
+    parsedPage['title'] = list()
+    parsedPage['text'] = list()
+
+    #articles = re.split('<page> (.*?) </page>', coll, re.DOTALL)
+    #articles = [string for string in articles if string != '' and string != ' ']
+    article = re.search('<page> (.*?) </page>', coll, re.DOTALL).group()
+    #print(f'articles {articles}\n')
     # 
-    for article in articles:
-        #current page
-        doc = []
+    #for article in articles:
 
-        #search for the end of the page and add it to doc
-        for line in article:
-            if line == '<\page>':
-                break
-            doc.append(line)
+    #current page
+    doc = []
 
-        currPage = ''.join(doc)
+    #search for the end of the page and add it to doc
+    for line in article:
+        if line == '<\page>':
+            break
+        doc.append(line)
 
-        #p stands for current page
-        pid=re.search('<id>(.*?)</id>', currPage, re.DOTALL)
-        ptitle=re.search('<title>(.*?)</title>', currPage, re.DOTALL)
-        ptext=re.search('<text>(.*?)</text>', currPage, re.DOTALL)
+    currPage = ''.join(doc)
 
-        #dictionary with keys: id, title and text eg.
-        #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
+    #p stands for current page
+    pid=re.search('<id>(.*?)</id>', currPage, re.DOTALL)
+    ptitle=re.search('<title>(.*?)</title>', currPage, re.DOTALL)
+    ptext=re.search('<text>(.*?)</text>', currPage, re.DOTALL)
 
-        parsedPages['id'].append(pid.group(1))
-        parsedPages['title'].append(ptitle.group(1))
-        parsedPages['text'].append(ptext.group(1))
+    #dictionary with keys: id, title and text eg.
+    #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
+    parsedPage['id'] = pid.group(1)
+    parsedPage['title'] = ptitle.group(1)
+    parsedPage['text'] = ptext.group(1)
 
-    return parsedPages
+    return parsedPage
     
 #<page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
 
@@ -91,43 +92,49 @@ def createIndex(coll):
     IDs of articles in which it occures and a positions in every article.'''
 
     parsedPage = parseCollection(coll)
-    print(f'parsedPage {parsedPage}')
+    print(f'parsedPage {parsedPage}\n')
 
     pageId = parsedPage['id']
-    print(f'pageId {pageId}')
+    print(f'pageId {pageId}\n')
     pageTitle = parsedPage['title']
-    print(f'pageTitle {pageTitle}')
+    print(f'pageTitle {pageTitle}\n')
     pageText = parsedPage['text']
-    print(f'pageText {pageText}')
+    print(f'pageText {pageText}\n')
 
-    tokens = getTerms(pageText)
-    print(f'tokens {tokens}')
+    #tokens = getTerms(pageText)
+
+    #print(f'tokens {tokens}\n')
 
     concatenate = pageTitle.split() + pageText.split()
-    print(f'concatenate {concatenate}')
+    print(f'concatenate {concatenate}\n')
+
+    tokens = getTerms(' '.join(concatenate))
 
     articleId = {}
 
     for token in tokens:
         articleId[token] = pageId
 
-    print(f'tokensId {articleId}')
+    print(f'tokensId {articleId}\n')
     
     tokensPos = {}
 
+    for token in tokens:
+        tokensPos[token] = []
+    
     for position, token in enumerate(tokens):
-        tokensPos[token] = position
+        tokensPos[token].append(position)
 
-    print(f'tokensPos {tokensPos}')
+    print(f'tokensPos {tokensPos}\n')
 
     invertedIndex = {}
 
     for token in tokens:
-        invertedIndex[token] = [articleId[token], [tokensPos[token]]]
-    print(f'invertedIndex {invertedIndex}')
+        invertedIndex[token] = [articleId[token], tokensPos[token]]
+    print(f'invertedIndex {invertedIndex}\n')
 
     return articleId, tokensPos
 
 #createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page>')
 
-print(parseCollection('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page> <page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>'))
+createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page> <page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
