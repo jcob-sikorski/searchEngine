@@ -82,7 +82,7 @@ def parseCollection(coll):
     
 #<page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
 
-def createIndex(coll):
+def createIndex(coll, invertedIndex):
     '''I: collection in form of XML file. 
 
     O: invertedIndex eg. 
@@ -109,6 +109,7 @@ def createIndex(coll):
     print(f'concatenate {concatenate}\n')
 
     tokens = getTerms(' '.join(concatenate))
+    print(f'tokens {tokens}\n')
 
     articleId = {}
 
@@ -129,12 +130,34 @@ def createIndex(coll):
 
     invertedIndex = {}
 
+    keys = invertedIndex.keys()
+    print(f'keys {keys}\n')
+    tk = {}
+    print(f'tokens {tokens}\n')
+
     for token in tokens:
-        invertedIndex[token] = [articleId[token], tokensPos[token]]
+        tk[token] = tokens.count(token)
+        if tk[token] > 1:
+            tokens = [i for i in tokens if i != token]
+            tokens.append(token)
+    
+    print(f'tokens {tokens}\n')
+
+    for token in tokens:
+
+        if token not in keys:
+            invertedIndex[token] = [articleId[token], tokensPos[token]]
+        else:
+            invertedIndex[token].append([articleId[token], tokensPos[token]])
+
     print(f'invertedIndex {invertedIndex}\n')
 
-    return articleId, tokensPos
+    return invertedIndex
+
+invertedIndex = {}
+
+
 
 #createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page>')
 
-createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page> <page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
+createIndex('<page> <title> Cat had cat which had a cat. </title> <id> 8773629817 </id> <text> Dog had been a dog until it started to laugh. </text> </page>', invertedIndex)
