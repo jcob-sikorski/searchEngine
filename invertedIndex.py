@@ -19,7 +19,7 @@ def getTerms(line):
     line = line.lower()
 
     #put spaces instead of non-alphanumeric characters
-    line=re.sub(r'[^a-z0-9 ]',' ',line)
+    line = re.sub(r'[^a-z0-9 ]',' ',line)
     line = line.split()
 
     stopwords = getStopwords()
@@ -51,10 +51,11 @@ def parseCollection(coll):
     '''I: collection in form of XML file. Containing tags: page, id, title and text
      
      O: dictionary with keys:
-
-      pageId eg. ('18987398723'), 
-      pageTitle eg. ('In the Middle of Nowhere.'), 
-      pageText eg. ('In early 80s Freud done something unexpectedly, obviously')
+      {
+      pageId eg. :'18987398723', 
+      pageTitle eg. :'In the Middle of Nowhere.', 
+      pageText eg. :'In early 80s Freud done something unexpectedly, obviously'
+      }
     '''
     #dictionary with keys: id, title and text eg.
     #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
@@ -64,12 +65,7 @@ def parseCollection(coll):
     parsedPage['title'] = list()
     parsedPage['text'] = list()
 
-    #articles = re.split('<page> (.*?) </page>', coll, re.DOTALL)
-    #articles = [string for string in articles if string != '' and string != ' ']
     article = re.search('<page> (.*?) </page>', coll, re.DOTALL).group()
-    #print(f'articles {articles}\n')
-    # 
-    #for article in articles:
 
     #current page
     doc = []
@@ -87,8 +83,6 @@ def parseCollection(coll):
     ptitle=re.search('<title>(.*?)</title>', currPage, re.DOTALL)
     ptext=re.search('<text>(.*?)</text>', currPage, re.DOTALL)
 
-    #dictionary with keys: id, title and text eg.
-    #{'id': ' 1872628290 ', 'title': ' Cow in the middle of nowhere. ', 'text': ' language chinese poland '}
     parsedPage['id'] = pid.group(1)
     parsedPage['title'] = ptitle.group(1)
     parsedPage['text'] = ptext.group(1)
@@ -118,14 +112,17 @@ def createIndex(coll, invertedIndex):
     concatenate = pageTitle.split() + pageText.split()
     print(f'concatenate {concatenate}\n')
 
+    # characteristic words in title + text
     tokens = getTerms(' '.join(concatenate))
     print(f'tokens {tokens}\n')
 
+    # all words with their stem
     stemWords = stemmer(' '.join(concatenate))
     print(f'stemWords {stemWords}\n')
 
     articleId = {}
 
+    # assigning each token to an articleId
     for token in tokens:
         articleId[token] = pageId
 
@@ -136,20 +133,23 @@ def createIndex(coll, invertedIndex):
     for token in tokens:
         tokensPos[token] = []
     
-    for position, token in enumerate(stemWords):
-        if token in tokens:
-            tokensPos[token].append(position)
+    # if a word is a token append it to tokensPos
+    for position, word in enumerate(stemWords):
+        if word in tokens:
+            tokensPos[word].append(position)
 
     print(f'tokensPos {tokensPos}\n')
 
     invertedIndex = {}
 
+    # check if invertedIndex hasn't already have some keys
     keys = invertedIndex.keys()
     print(f'keys {keys}\n')
 
     tk = {}
     print(f'tokens {tokens}\n')
 
+    # if token occurs more than once, delete all occurences in tokens list
     for token in tokens:
         tk[token] = tokens.count(token)
         if tk[token] > 1:
@@ -158,6 +158,8 @@ def createIndex(coll, invertedIndex):
     
     print(f'tokens {tokens}\n')
 
+    # if token is already in invertedIndex, add only its position,
+    # else create for new token a list and append to it its articleId and its position in text
     for token in tokens:
 
         if token not in keys:
