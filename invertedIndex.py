@@ -32,6 +32,21 @@ def getTerms(line):
 
     return tokens
 
+def stemmer(line):
+    '''I: line of text in page. 
+    
+    O: characteristic words in this line.'''
+    line = line.lower()
+
+    #put spaces instead of non-alphanumeric characters
+    line=re.sub(r'[^a-z0-9 ]',' ',line)
+    words = line.split()
+
+    #transform term to it's core  [happened --> hapenn]
+    stemWord = [porter.stem(term, 0, len(term)-1) for term in words]
+
+    return stemWord
+
 def parseCollection(coll):
     '''I: collection in form of XML file. Containing tags: page, id, title and text
      
@@ -79,8 +94,7 @@ def parseCollection(coll):
     parsedPage['text'] = ptext.group(1)
 
     return parsedPage
-    
-#<page> <title> Freud. Neuroplascity and Alzheimer issues. </title> <id> 8773629817 </id> <text> In early 80s Freud done something unexpectedly, obviously he discovered new paradox. </text> </page>')
+
 
 def createIndex(coll, invertedIndex):
     '''I: collection in form of XML file. 
@@ -101,15 +115,14 @@ def createIndex(coll, invertedIndex):
     pageText = parsedPage['text']
     print(f'pageText {pageText}\n')
 
-    #tokens = getTerms(pageText)
-
-    #print(f'tokens {tokens}\n')
-
     concatenate = pageTitle.split() + pageText.split()
     print(f'concatenate {concatenate}\n')
 
     tokens = getTerms(' '.join(concatenate))
     print(f'tokens {tokens}\n')
+
+    stemWords = stemmer(' '.join(concatenate))
+    print(f'stemWords {stemWords}\n')
 
     articleId = {}
 
@@ -123,8 +136,9 @@ def createIndex(coll, invertedIndex):
     for token in tokens:
         tokensPos[token] = []
     
-    for position, token in enumerate(tokens):
-        tokensPos[token].append(position)
+    for position, token in enumerate(stemWords):
+        if token in tokens:
+            tokensPos[token].append(position)
 
     print(f'tokensPos {tokensPos}\n')
 
@@ -132,6 +146,7 @@ def createIndex(coll, invertedIndex):
 
     keys = invertedIndex.keys()
     print(f'keys {keys}\n')
+
     tk = {}
     print(f'tokens {tokens}\n')
 
@@ -156,8 +171,4 @@ def createIndex(coll, invertedIndex):
 
 invertedIndex = {}
 
-
-
-#createIndex('<page> <title> Cow in the middle of nowhere. </title> <id> 1872628290 </id> <text> language chinese poland language china </text> </page>')
-
-createIndex('<page> <title> Cat had cat which had a cat. </title> <id> 8773629817 </id> <text> Dog had been a dog until it started to laugh. </text> </page>', invertedIndex)
+createIndex("<page> <title> Hello darkness my friend. </title> <id> 12888 </id> <text> I don't wanna be alone in a darkness. </text> </page>", invertedIndex)
