@@ -112,7 +112,7 @@ def createIndex(coll, invertedIndex):
     concatenate = pageTitle.split() + pageText.split()
     print(f'concatenate {concatenate}\n')
 
-    # characteristic words in title + text
+    # characteristic words' core in title + text
     tokens = getTerms(' '.join(concatenate))
     print(f'tokens {tokens}\n')
 
@@ -140,8 +140,6 @@ def createIndex(coll, invertedIndex):
 
     print(f'tokensPos {tokensPos}\n')
 
-    invertedIndex = {}
-
     # check if invertedIndex hasn't already have some keys
     keys = invertedIndex.keys()
     print(f'keys {keys}\n')
@@ -161,16 +159,50 @@ def createIndex(coll, invertedIndex):
     # if token is already in invertedIndex, add only its position,
     # else create for new token a list and append to it its articleId and its position in text
     for token in tokens:
-
         if token not in keys:
-            invertedIndex[token] = [articleId[token], tokensPos[token]]
+            invertedIndex[token] = [(articleId[token], tokensPos[token])]
         else:
-            invertedIndex[token].append([articleId[token], tokensPos[token]])
+            invertedIndex[token].append((articleId[token], tokensPos[token]))
 
     print(f'invertedIndex {invertedIndex}\n')
 
     return invertedIndex
 
+def writeIndexToFile(invertedIndex):
+    # characteristic words
+    terms = invertedIndex.keys()
+    print(terms)
+    # index saved as    term|docID1:pos1,pos2;docID2:pos3,pos4,pos5;…
+    with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\invertedIndex.txt', 'a+') as f:
+        for term in terms:
+            f.writelines(f'{term}|')
+
+            for ID, position in invertedIndex[term]:
+                # for every articleId write postion of a term in it
+                f.writelines(f'{ID}:')
+                
+                # if there isn't only one position put a comma after it 
+                # or if it's the last position in the list of positions, do not
+                if len(position) > 1:
+                    for pos in position:
+                        # if it's the last element in the list do not write a comma
+                        if pos == position[-1]:
+                            f.writelines(f'{pos}')
+                        else:
+                            f.writelines(f'{pos},')
+                    #f.writelines(f'{position}')
+                else:
+                    for pos in position:
+                        f.writelines(f'{pos}')
+                f.writelines(f';')
+            f.writelines('\n')
+
 invertedIndex = {}
 
-createIndex("<page> <title> Hello darkness my friend. </title> <id> 12888 </id> <text> I don't wanna be alone in a darkness. </text> </page>", invertedIndex)
+
+
+pages = ["<page> <title> pass pass </title> <id> 12888 </id> <text> bank account pass </text> </page>", "<page> <id> 10990881 </id> <title> bank account pass </title> <text> pass pass </text> </page>", "<page> <title> beach careful stem word something </title> <id> 8768586 </id> <text> indicator of warefare </text> </page>"]
+for page in pages:
+    createIndex(page, invertedIndex)
+
+writeIndexToFile(invertedIndex)
