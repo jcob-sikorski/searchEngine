@@ -154,7 +154,7 @@ def createIndex(coll, invertedIndex):
             tokens = [i for i in tokens if i != token]
             tokens.append(token)
     
-    print(f'tokens {tokens}\n')
+    print(f'tokens without occurences {tokens}\n')
 
     # if token is already in invertedIndex, add only its position,
     # else create for new token a list and append to it its articleId and its position in text
@@ -183,17 +183,12 @@ def writeIndexToFile(invertedIndex):
                 
                 # if there isn't only one position put a comma after it 
                 # or if it's the last position in the list of positions, do not
-                if len(position) > 1:
-                    for pos in position:
-                        # if it's the last element in the list do not write a comma
-                        if pos == position[-1]:
-                            f.writelines(f'{pos}')
-                        else:
-                            f.writelines(f'{pos},')
-                    #f.writelines(f'{position}')
-                else:
-                    for pos in position:
+                for pos in position:
+                    # if it's the last element in the list do not write a comma
+                    if position.index(pos) == len(position)-1:
                         f.writelines(f'{pos}')
+                    else:
+                        f.writelines(f'{pos},')
                 f.writelines(f';')
             f.writelines('\n')
 
@@ -201,7 +196,7 @@ invertedIndex = {}
 
 
 
-pages = ["<page> <title> pass pass </title> <id> 12888 </id> <text> bank account pass </text> </page>", "<page> <id> 10990881 </id> <title> bank account pass </title> <text> pass pass </text> </page>", "<page> <title> beach careful stem word something </title> <id> 8768586 </id> <text> indicator of warefare </text> </page>"]
+pages = ["<page> <title> The most ambitious companies </title> <id> 12888 </id> <text> Every cutting edge in tech </text> </page>", "<page> <id> 10990881 </id> <title> Law of banking </title> <text> Pax Romana is a term </text> </page>", "<page> <title> president trump bombing atacama </title> <id> 2982711 </id> <text> software enginner iraq al-qaeida </text> </page>"]
 for page in pages:
     createIndex(page, invertedIndex)
 
