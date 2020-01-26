@@ -36,6 +36,37 @@ def queryIndex():
                     pos[pos.index(i)] = int(i)
                 lines[key][lines[key].index(coordinates)] = (index, pos)
 
-    print(f'lines {lines}')
+    return lines
 
-queryIndex()
+
+def queryTerm():
+    '''I: term from terminal
+
+    O: list of articles' IDs where term occurs
+    '''
+    # stem searched term
+    from invertedIndex import stemmer
+
+    try:
+        term = input('Search: ')
+        print(f'term {term}')
+
+        # inverted index of all articles
+        invertedIndex = queryIndex()
+        
+        # stemmed searched term
+        sTerm = stemmer(term)
+        print(f'sTerm {sTerm}')
+
+        IDs = []
+
+        for term in sTerm:
+            for ID, pos in invertedIndex[term]:
+                IDs.append(ID)
+
+    except:
+        IDs = []
+    
+    print('IDs ', IDs)
+
+    return IDs
