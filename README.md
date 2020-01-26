@@ -1,2 +1,3 @@
-# searchEngine
-Rudimentary browser for wikipedia.
+#searchEngine
+
+Browser for wikipedia.
