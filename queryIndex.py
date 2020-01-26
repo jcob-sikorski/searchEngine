@@ -1,4 +1,5 @@
 def queryIndex():
+    '''O: inverted index from txt file InvertedIndex.txt'''
     # index from txt file
     recInvertedIndex = {}
 
@@ -39,8 +40,8 @@ def queryIndex():
     return lines
 
 
-def queryTerm():
-    '''I: term from terminal
+def oneWordQuery():
+    '''I: query from terminal
 
     O: list of articles' IDs where term occurs
     '''
@@ -48,19 +49,19 @@ def queryTerm():
     from invertedIndex import stemmer
 
     try:
-        term = input('Search: ')
-        print(f'term {term}')
+        query = input('Search: ')
+        print(f'query {query}')
 
         # inverted index of all articles
         invertedIndex = queryIndex()
         
         # stemmed searched term
-        sTerm = stemmer(term)
-        print(f'sTerm {sTerm}')
+        sQuery = stemmer(query)
+        print(f'sTerm {sQuery}')
 
         IDs = []
 
-        for term in sTerm:
+        for term in sQuery:
             for ID, pos in invertedIndex[term]:
                 IDs.append(ID)
 
@@ -69,4 +70,29 @@ def queryTerm():
     
     print('IDs ', IDs)
 
+    return IDs
+
+def freeTextQuery():
+    '''I: Free Text Query from terminal
+
+    O: list of articles' IDs where terms occur
+    '''   
+    from invertedIndex import getTerms
+
+    query = input('Search: ')
+    terms = getTerms(query)
+    print(f'terms {terms}')
+
+    IDs = []
+
+    invertedIndex = queryIndex()
+
+    for term in terms:
+        try:
+            for ID, pos in invertedIndex[term]:
+                IDs.append(ID)
+        except:
+            pass
+
+    print(f'IDs {IDs}')
     return IDs
