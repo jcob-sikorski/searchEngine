@@ -6,21 +6,16 @@ def queryIndex():
     # open invertedIndex txt file
     with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\invertedIndex.txt', 'r') as f:
         for line in f:
-            line = line.replace(' ', '')
-            line = line.replace('\n', '')
-            line = line.split('|')
+            line = line.replace(' ', '').replace('\n', '').split('|')
+
             # Key = term: Value = id:pos1,pos2,...;
             recInvertedIndex[line[0]] = line[1]
 
-        keys = recInvertedIndex.keys()
         # for every term |Key = term: Value = id:pos1,pos2,...;| --> |Key = term: Value = [(id, [pos1, pos2, ...]), ...]
-        for key in keys:
-
-            # split coordinates by ;
-            recInvertedIndex[key] = recInvertedIndex[key].split(';')
+        for key in recInvertedIndex.keys():
 
             # delete all occurences of whitespace in list of strings
-            recInvertedIndex[key] = [i for i in recInvertedIndex[key] if i != '']
+            recInvertedIndex[key] = [i for i in recInvertedIndex[key].split(';') if i != '']
 
             # split id: pos1, pos2, ... by :
             for string in recInvertedIndex[key]:
@@ -29,7 +24,7 @@ def queryIndex():
             # spit positions by , and change each position to int type
             for coordinates in recInvertedIndex[key]:
                 index, pos = coordinates
-                print(f'coordinates {index}')
+
                 pos = pos.split(',')
                 for i in pos:
                     pos[pos.index(i)] = int(i)
@@ -47,27 +42,24 @@ def oneWordQuery():
 
     try:
         query = input('Search: ')
-        print(f'query {query}')
 
         # inverted index of all articles
         invertedIndex = queryIndex()
         
         # stemmed searched term
         sQuery = stemmer(query)
-        print(f'sTerm {sQuery}')
-
+        
+        # articles IDs
         IDs = []
 
         for term in sQuery:
             for ID, pos in invertedIndex[term]:
                 IDs.append(ID)
-
     except:
         IDs = []
-    
-    print('IDs ', IDs)
 
     return IDs
+
 
 def freeTextQuery():
     '''I: Free Text Query from terminal
@@ -77,7 +69,6 @@ def freeTextQuery():
 
     query = input('Search: ')
     terms = getTerms(query)
-    print(f'terms {terms}')
 
     IDs = []
 
@@ -89,9 +80,96 @@ def freeTextQuery():
                 IDs.append(ID)
         except:
             pass
-
-    print(f'IDs {IDs}')
+        
     return IDs
 
+
+def intersect(l):
+    l = sorted(l, key=len)
+
+    all_ids = []
+    intersection = []
+
+    for elem in l:
+        for subElem in elem:
+            all_ids.append(subElem)
+    
+    for elem in all_ids:
+        if all_ids.count(elem) == len(l):
+            intersection.append(elem)
+        else:
+            pass
+
+    return intersection
+
+
 def phraseQueries():
-    query = input('Search: ')
+    from invertedIndex import getTerms
+
+    query = 'departure from brown computer science university'
+    terms = getTerms(query)
+    
+
+    invertedIndex = queryIndex()
+
+    holder = []
+    IDs = []
+
+    for term in terms:
+        if term in invertedIndex.keys():
+            for coordinates in invertedIndex[term]:
+
+                holder.append(coordinates[0])
+
+            IDs.append(holder)
+            holder = []
+        else:
+            # for tests pass, in reality change pass to break
+            pass
+
+    inter = list(set(intersect(IDs)))
+    positions = []
+    
+    print(f'inter {inter}')
+
+    for i in inter:
+        holder = []
+        for term in terms:
+            if term in invertedIndex.keys():
+                for ID, pos in invertedIndex[term]:
+                    print(ID)
+                    if ID in inter:
+                        print(f'------------------ {inter}')
+                        holder.append(pos)
+
+        positions.append(holder)
+        holder = []
+
+    print(f'positions {positions}')
+    for i, x in enumerate(positions):
+        for ind, l in enumerate(x):
+            for y in l:
+                positions[i][ind] = l[0] - ind
+
+    print(f'positions {positions}')   
+
+    c = []
+
+    for i, x in enumerate(positions):
+        for ind, pos in enumerate(x):
+            try:
+                if positions[i][ind+1] == pos + 1:
+                    print('ja ja')
+                    c.append(inter[i])
+
+            except:
+                pass
+    
+    print(c)
+            
+
+    return IDs
+
+
+#test = 'brown computer science dog in universe'
+phraseQueries()
