@@ -2,50 +2,53 @@ from porterStemmer import PorterStemmer
 import re
 from collections import defaultdict
 
+'''
+1) Concatenate the title and the text of the page.
+2) Lowercase all words.
+3) Get all tokens, where a token is a string of alphanumeric characters terminated by a non-alphanumeric character. 
+    The alphanumeric characters are defined to be [a-z0-9]. So, the tokens for the word ‘apple+orange’ would be ‘apple’ 
+    and ‘orange’.
+4) Filter out all the tokens that are in the stop words list, such as ‘a’, ‘an’, ‘the’.
+5) Stem each token using Porter Stemmer to finally obtain the stream of terms. 
+    Porter Stemmer removes common endings from words.
+'''
+
+
 porter = PorterStemmer()
 
 def getStopwords():
     '''O: list of common words in English language.'''
+
     with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\stopwords.txt', 'r') as f:
         sWord = [line.rstrip() for line in f]
 
     stopwords = dict.fromkeys(sWord)
     return stopwords
 
-def getTerms(line):
+def getTerms(line, termsOnly=True):
     '''I: line of text in page. 
     
     O: characteristic words in this line.'''
     line = line.lower()
-
     #put spaces instead of non-alphanumeric characters
     line = re.sub(r'[^a-z0-9 ]',' ',line)
-    line = line.split()
-
-    stopwords = getStopwords()
-
-    #if term isn't stopword (stopword = common word) pop it out, else add it to list of tokens
-    tokens = [term for term in line if term not in stopwords.keys()]
-
-    #transform term to it's core  [happened --> hapenn]
-    tokens = [porter.stem(term, 0, len(term)-1) for term in tokens]
-
-    return tokens
-
-def stemmer(line):
-    '''I: line of text in page. 
-    
-    O: characteristic words in this line.'''
-    line = line.lower()
-
-    #put spaces instead of non-alphanumeric characters
-    line=re.sub(r'[^a-z0-9 ]',' ',line)
     words = line.split()
 
-    #transform term to it's core  [happened --> hapenn]
-    stemWord = [porter.stem(term, 0, len(term)-1) for term in words]
+    if termsOnly:
+        stopwords = getStopwords()
 
-    return stemWord
+        #if term isn't stopword (stopword = common word) pop it out, else add it to list of tokens
+        tokens = [term for term in words if term not in stopwords.keys()]
+
+        #transform term to it's core  [happened --> hapenn]
+        tokens = [porter.stem(term, 0, len(term)-1) for term in tokens]
+    else:
+        #transform term to it's core  [happened --> hapenn]
+        stemWord = [porter.stem(term, 0, len(term)-1) for term in words]
+        #print(f'stemWord {stemWord}')
+        return stemWord
+
+    return tokens
 
 def parseCollection(coll):
     '''I: collection in form of XML file. Containing tags: page, id, title and text
@@ -94,61 +97,39 @@ def createIndex(coll, invertedIndex):
     '''I: collection in form of XML file. 
 
     O: invertedIndex eg. 
-    {'languag': [' 1872628290 ', [3]], 'chines': [' 1872628290 ', [1]]} 
+    Key = term: Value = [(id, [pos1, pos2, ...]), ... 
 
     where key is stem of characteristic word and a value is a list containing 
     IDs of articles in which it occures and a positions in every article.'''
 
     parsedPage = parseCollection(coll)
-    print(f'parsedPage {parsedPage}\n')
-
     pageId = parsedPage['id']
-    print(f'pageId {pageId}\n')
     pageTitle = parsedPage['title']
-    print(f'pageTitle {pageTitle}\n')
     pageText = parsedPage['text']
-    print(f'pageText {pageText}\n')
-
+ 
     concatenate = pageTitle.split() + pageText.split()
     print(f'concatenate {concatenate}\n')
 
     # characteristic words' core in title + text
     tokens = getTerms(' '.join(concatenate))
     print(f'tokens {tokens}\n')
+    notCharTokens = getTerms(' '.join(concatenate), False)
 
-    # all words with their stem
-    stemWords = stemmer(' '.join(concatenate))
-    print(f'stemWords {stemWords}\n')
+    # current page ID
+    articleId = {token:pageId for token in tokens}
 
-    articleId = {}
+    ## if a word is a token append it to tokensPos
+    tokensPos = {token:[] for token in tokens}
 
-    # assigning each token to an articleId
-    for token in tokens:
-        articleId[token] = pageId
-
-    print(f'tokensId {articleId}\n')
-    
-    tokensPos = {}
-
-    for token in tokens:
-        tokensPos[token] = []
-    
-    # if a word is a token append it to tokensPos
-    for position, word in enumerate(stemWords):
-        if word in tokens:
-            tokensPos[word].append(position)
+    for pos, token in enumerate(notCharTokens):
+        if token in tokens:
+            tokensPos[token].append(pos)
 
     print(f'tokensPos {tokensPos}\n')
 
-    # check if invertedIndex hasn't already have some keys
-    keys = invertedIndex.keys()
-    print(f'keys {keys}\n')
-
-    tk = {}
-    print(f'tokens {tokens}\n')
-
     # if token occurs more than once, delete all occurences in tokens list
     for token in tokens:
+        tk = {}
         tk[token] = tokens.count(token)
         if tk[token] > 1:
             tokens = [i for i in tokens if i != token]
@@ -159,22 +140,19 @@ def createIndex(coll, invertedIndex):
     # if token is already in invertedIndex, add only its position,
     # else create for new token a list and append to it its articleId and its position in text
     for token in tokens:
-        if token not in keys:
-            invertedIndex[token] = [(articleId[token], tokensPos[token])]
+        if token not in invertedIndex.keys():
+            invertedIndex[token] = [(int(articleId[token]), tokensPos[token])]
         else:
-            invertedIndex[token].append((articleId[token], tokensPos[token]))
+            invertedIndex[token].append((int(articleId[token]), tokensPos[token]))
 
     print(f'invertedIndex {invertedIndex}\n')
 
     return invertedIndex
 
 def writeIndexToFile(invertedIndex):
-    # characteristic words
-    terms = invertedIndex.keys()
-    print(terms)
     # index saved as    term|docID1:pos1,pos2;docID2:pos3,pos4,pos5;…
     with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\invertedIndex.txt', 'a+') as f:
-        for term in terms:
+        for term in invertedIndex.keys():
             f.writelines(f'{term}|')
 
             for ID, position in invertedIndex[term]:
@@ -194,9 +172,9 @@ def writeIndexToFile(invertedIndex):
 
 invertedIndex = {}
 
+pages = ["<page> <title> one in the middle of nowhere </title> <id> 98798733 </id> <text> brown brown</text> </page>", 
+"<page> <id> 1233323 </id> <title> department </title> <text> brown computer young university </text> </page>"]
 
-
-pages = ["<page> <title> The most ambitious companies </title> <id> 12888 </id> <text> Every cutting edge in tech </text> </page>", "<page> <id> 10990881 </id> <title> Law of banking </title> <text> Pax Romana is a term </text> </page>", "<page> <title> president trump bombing atacama </title> <id> 2982711 </id> <text> software enginner iraq al-qaeida </text> </page>"]
 for page in pages:
     createIndex(page, invertedIndex)
 
