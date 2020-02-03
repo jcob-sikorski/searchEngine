@@ -28,7 +28,8 @@ def getStopwords():
 def getTerms(line, termsOnly=True):
     '''I: line of text in page. 
     
-    O: characteristic words in this line.'''
+    O: if termOnly=True: characteristic words in this line.
+      else: all words stemmed.'''
     line = line.lower()
     #put spaces instead of non-alphanumeric characters
     line = re.sub(r'[^a-z0-9 ]',' ',line)
@@ -93,7 +94,7 @@ def parseCollection(coll):
     return parsedPage
 
 
-def createIndex(coll, invertedIndex):
+def createIndex(coll, invertedIndex, termsOnly=True):
     '''I: collection in form of XML file. 
 
     O: invertedIndex eg. 
@@ -117,33 +118,36 @@ def createIndex(coll, invertedIndex):
 
     # current page ID
     articleId = {token:pageId for token in tokens}
+    print(f'articleId {articleId}')
 
-    ## if a word is a token append it to tokensPos
-    tokensPos = {token:[] for token in tokens}
-
-    for pos, token in enumerate(notCharTokens):
-        if token in tokens:
-            tokensPos[token].append(pos)
+    # if word is a token append it to tokensPos
+    if termsOnly:
+        tokensPos = {word:[pos] for pos, word in enumerate(notCharTokens) if word in tokens}
+    else:
+        tokensPos = {word:[pos] for pos, word in enumerate(notCharTokens)}
 
     print(f'tokensPos {tokensPos}\n')
 
-    # if token occurs more than once, delete all occurences in tokens list
-    for token in tokens:
-        tk = {}
-        tk[token] = tokens.count(token)
-        if tk[token] > 1:
-            tokens = [i for i in tokens if i != token]
-            tokens.append(token)
+    tokens = list(set(tokens))
     
     print(f'tokens without occurences {tokens}\n')
 
     # if token is already in invertedIndex, add only its position,
     # else create for new token a list and append to it its articleId and its position in text
-    for token in tokens:
-        if token not in invertedIndex.keys():
-            invertedIndex[token] = [(int(articleId[token]), tokensPos[token])]
-        else:
-            invertedIndex[token].append((int(articleId[token]), tokensPos[token]))
+    if termsOnly:
+        for token in tokens:
+            if token not in invertedIndex.keys():
+                invertedIndex[token] = [(int(articleId[token]), tokensPos[token])]
+            else:
+                invertedIndex[token].append((int(articleId[token]), tokensPos[token]))
+    else:
+        for word in notCharTokens:
+            if word not in invertedIndex.keys():
+                invertedIndex[word] = [(int(articleId[tokens[0]]), tokensPos[word])]
+            else:
+                invertedIndex[word].append((int(articleId[tokens[0]]), tokensPos[word]))
+
+
 
     print(f'invertedIndex {invertedIndex}\n')
 
@@ -174,8 +178,8 @@ invertedIndex = {}
 
 pages = ["<page> <title> one in the middle of nowhere </title> <id> 98798733 </id> <text> brown brown</text> </page>", 
 "<page> <id> 1233323 </id> <title> department </title> <text> brown computer young university </text> </page>"]
-
+# if phrase query termsOnly=False, else True
 for page in pages:
-    createIndex(page, invertedIndex)
+    createIndex(page, invertedIndex, termsOnly=False)
 
 writeIndexToFile(invertedIndex)
