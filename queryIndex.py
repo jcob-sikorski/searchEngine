@@ -1,7 +1,7 @@
 def queryIndex():
     '''O: inverted index from txt file InvertedIndex.txt'''
     # invertedIndex from txt file
-    recInvertedIndex = {}
+    invertedIndex = {}
 
     # open invertedIndex txt file
     with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\invertedIndex.txt', 'r') as f:
@@ -9,78 +9,63 @@ def queryIndex():
             line = line.replace(' ', '').replace('\n', '').split('|')
 
             # Key = term: Value = id:pos1,pos2,...;
-            recInvertedIndex[line[0]] = line[1]
+            invertedIndex[line[0]] = line[1]
 
         # for every term |Key = term: Value = id:pos1,pos2,...;| --> |Key = term: Value = [(id, [pos1, pos2, ...]), ...]
-        for key in recInvertedIndex.keys():
-
+        for term in invertedIndex.keys():
             # delete all occurences of whitespace in list of strings
-            recInvertedIndex[key] = [i for i in recInvertedIndex[key].split(';') if i != '']
+            invertedIndex[term] = [i for i in invertedIndex[term].split(';') if i != '']
 
             # split id: pos1, pos2, ... by :
-            for string in recInvertedIndex[key]:
-                recInvertedIndex[key][recInvertedIndex[key].index(string)] = tuple(string.split(':'))
+            for string in invertedIndex[term]:
+                invertedIndex[term][invertedIndex[term].index(string)] = tuple(string.split(':'))
             
-            # spit positions by , and change each position to int type
-            for coordinates in recInvertedIndex[key]:
+            # spit positions by ,
+            for coordinates in invertedIndex[term]:
                 index, pos = coordinates
-
                 pos = pos.split(',')
+                # change each position to int type
                 for i in pos:
                     pos[pos.index(i)] = int(i)
-                recInvertedIndex[key][recInvertedIndex[key].index(coordinates)] = (int(coordinates[0]), pos)
-    print(f'recInvertedIndex {recInvertedIndex}')
-    return recInvertedIndex
+
+                invertedIndex[term][invertedIndex[term].index(coordinates)] = (int(coordinates[0]), pos)
+    return invertedIndex
 
 
-def oneWordQuery():
+def oneWordQuery(invertedIndex):
     '''I: query from terminal
     O: list of articles' IDs where term occurs
     '''
     # stem searched term
-    from invertedIndex import stemmer
+    from invertedIndex import getTerms
 
-    try:
-        query = input('Search: ')
-
-        # inverted index of all articles
-        invertedIndex = queryIndex()
-        
-        # stemmed searched term
-        sQuery = stemmer(query)
-        
-        # articles IDs
+    stemQuery = getTerms(input('Search: '))
+    # if query in invertedIndex return articles IDs in which query occurs
+    # else return []
+    for term in stemQuery:
         IDs = []
-
-        for term in sQuery:
+        if term in invertedIndex.keys():
             for ID, pos in invertedIndex[term]:
                 IDs.append(ID)
-    except:
-        IDs = []
-
+        else:
+            return []
     return IDs
 
 
-def freeTextQuery():
+def freeTextQuery(invertedIndex):
     '''I: Free Text Query from terminal
-    O: list of articles' IDs where terms occur
+    O: list of articles' IDs in which some searched terms occur
     '''   
     from invertedIndex import getTerms
 
-    query = input('Search: ')
-    terms = getTerms(query)
+    terms = getTerms(input('Search: '))
 
     IDs = []
 
-    invertedIndex = queryIndex()
-
     for term in terms:
-        try:
+        if term in invertedIndex.keys():
             for ID, pos in invertedIndex[term]:
-                IDs.append(ID)
-        except:
-            pass
-        
+                IDs.append(ID)   
     return IDs
 
 
@@ -103,73 +88,54 @@ def intersect(l):
     return intersection
 
 
-def phraseQueries():
+def phraseQueries(invertedIndex):
     from invertedIndex import getTerms
+    #from collections import defaultdict
 
-    query = 'departure from brown computer science university'
-    terms = getTerms(query)
-    
-
-    invertedIndex = queryIndex()
-
-    holder = []
+    query = input('Search: ')
+    terms = getTerms(query, False)
+    # IDs of articles in which term occured
     IDs = []
 
     for term in terms:
+        holder = []
+
         if term in invertedIndex.keys():
             for coordinates in invertedIndex[term]:
-
+                # add all IDs of articles in which the term occurs
                 holder.append(coordinates[0])
-
+            # add all IDs to the IDs
             IDs.append(holder)
-            holder = []
         else:
-            # for tests pass, in reality change pass to break
-            pass
+            print('None!')
+            return None
+    print(f'IDs {IDs}')
 
+    # IDs of articles in which query occurs
     inter = list(set(intersect(IDs)))
-    positions = []
+    positions = {key:[] for key in inter}
+
+    print(f'\ninter {inter}')
+    #terms = list(set(terms))
+    for term in terms:
+        if term in invertedIndex.keys():
+            for ID, pos in invertedIndex[term]:
+                if ID in inter:
+                    positions[ID].append(pos)
     
-    print(f'inter {inter}')
-
-    for i in inter:
-        holder = []
-        for term in terms:
-            if term in invertedIndex.keys():
-                for ID, pos in invertedIndex[term]:
-                    print(ID)
-                    if ID in inter:
-                        print(f'------------------ {inter}')
-                        holder.append(pos)
-
-        positions.append(holder)
-        holder = []
-
     print(f'positions {positions}')
-    for i, x in enumerate(positions):
-        for ind, l in enumerate(x):
-            for y in l:
-                positions[i][ind] = l[0] - ind
+    for ID in inter:
+        holder = []
+        for i, termPos in enumerate(positions[ID]):
+            holder.append(termPos[0] - i)
+        positions[ID] = holder
 
-    print(f'positions {positions}')   
+    legit = []
+    print(f'positions {positions}')
+    for ID in inter:
+        if positions[ID][0] == positions[ID][1] or positions[ID][0] == positions[ID][1]+1:
+            legit.append(ID)
 
-    c = []
+    print(legit)
 
-    for i, x in enumerate(positions):
-        for ind, pos in enumerate(x):
-            try:
-                if positions[i][ind+1] == pos + 1:
-                    print('ja ja')
-                    c.append(inter[i])
-
-            except:
-                pass
-    
-    print(c)
-            
-
-    return IDs
-
-
-#test = 'brown computer science dog in universe'
-phraseQueries()
+    return legit
