@@ -32,6 +32,25 @@ def queryIndex():
     return invertedIndex
 
 
+def intersect(l):
+    l = sorted(l, key=len)
+
+    all_ids = []
+    intersection = []
+
+    for elem in l:
+        for subElem in elem:
+            all_ids.append(subElem)
+    
+    for elem in all_ids:
+        if all_ids.count(elem) == len(l):
+            intersection.append(elem)
+        else:
+            pass
+
+    return intersection
+
+
 def oneWordQuery(invertedIndex):
     '''I: query from terminal
     O: list of articles' IDs where term occurs
@@ -65,27 +84,12 @@ def freeTextQuery(invertedIndex):
     for term in terms:
         if term in invertedIndex.keys():
             for ID, pos in invertedIndex[term]:
-                IDs.append(ID)   
+                IDs.append(ID)
+
+    IDs = list(set(IDs))   
+
+    print(f'IDs {IDs}')
     return IDs
-
-
-def intersect(l):
-    l = sorted(l, key=len)
-
-    all_ids = []
-    intersection = []
-
-    for elem in l:
-        for subElem in elem:
-            all_ids.append(subElem)
-    
-    for elem in all_ids:
-        if all_ids.count(elem) == len(l):
-            intersection.append(elem)
-        else:
-            pass
-
-    return intersection
 
 
 def phraseQueries(invertedIndex):
@@ -139,3 +143,6 @@ def phraseQueries(invertedIndex):
     print(legit)
 
     return legit
+
+invertedIndex = queryIndex()
+freeTextQuery(invertedIndex)
