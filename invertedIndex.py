@@ -13,7 +13,6 @@ from collections import defaultdict
     Porter Stemmer removes common endings from words.
 '''
 
-
 porter = PorterStemmer()
 
 def getStopwords():
@@ -31,6 +30,7 @@ def getTerms(line, termsOnly=True):
     O: if termOnly=True: characteristic words in this line.
       else: all words stemmed.'''
     line = line.lower()
+
     #put spaces instead of non-alphanumeric characters
     line = re.sub(r'[^a-z0-9 ]',' ',line)
     words = line.split()
@@ -46,7 +46,6 @@ def getTerms(line, termsOnly=True):
     else:
         #transform term to it's core  [happened --> hapenn]
         stemWord = [porter.stem(term, 0, len(term)-1) for term in words]
-        #print(f'stemWord {stemWord}')
         return stemWord
 
     return tokens
@@ -69,18 +68,7 @@ def parseCollection(coll):
     parsedPage['title'] = list()
     parsedPage['text'] = list()
 
-    article = re.search('<page> (.*?) </page>', coll, re.DOTALL).group()
-
-    #current page
-    doc = []
-
-    #search for the end of the page and add it to doc
-    for line in article:
-        if line == '<\page>':
-            break
-        doc.append(line)
-
-    currPage = ''.join(doc)
+    currPage = coll
 
     #p stands for current page
     pid=re.search('<id>(.*?)</id>', currPage, re.DOTALL)
@@ -109,28 +97,35 @@ def createIndex(coll, invertedIndex, termsOnly=True):
     pageText = parsedPage['text']
  
     concatenate = pageTitle.split() + pageText.split()
-    print(f'concatenate {concatenate}\n')
-
+ 
     # characteristic words' core in title + text
     tokens = getTerms(' '.join(concatenate))
-    print(f'tokens {tokens}\n')
     notCharTokens = getTerms(' '.join(concatenate), False)
 
     # current page ID
     articleId = {token:pageId for token in tokens}
-    print(f'articleId {articleId}')
 
+    tokensPos = {}
     # if word is a token append it to tokensPos
     if termsOnly:
-        tokensPos = {word:[pos] for pos, word in enumerate(notCharTokens) if word in tokens}
-    else:
-        tokensPos = {word:[pos] for pos, word in enumerate(notCharTokens)}
 
-    print(f'tokensPos {tokensPos}\n')
+        for pos, word in enumerate(notCharTokens):
+            if word in tokens:
+                if word in tokensPos:
+                    tokensPos[word].append(pos)
+                else:
+                    tokensPos[word] = [pos]
+         
+    else:
+
+        for pos, word in enumerate(notCharTokens):
+            if word in tokensPos:
+                tokensPos[word].append(pos)
+            else:
+                tokensPos[word] = [pos]
 
     tokens = list(set(tokens))
-    
-    print(f'tokens without occurences {tokens}\n')
+    notCharTokens = list(set(notCharTokens))
 
     # if token is already in invertedIndex, add only its position,
     # else create for new token a list and append to it its articleId and its position in text
@@ -146,11 +141,6 @@ def createIndex(coll, invertedIndex, termsOnly=True):
                 invertedIndex[word] = [(int(articleId[tokens[0]]), tokensPos[word])]
             else:
                 invertedIndex[word].append((int(articleId[tokens[0]]), tokensPos[word]))
-
-
-
-    print(f'invertedIndex {invertedIndex}\n')
-
     return invertedIndex
 
 def writeIndexToFile(invertedIndex):
@@ -175,11 +165,14 @@ def writeIndexToFile(invertedIndex):
             f.writelines('\n')
 
 invertedIndex = {}
-
-pages = ["<page> <title> one in the middle of nowhere </title> <id> 98798733 </id> <text> brown brown</text> </page>", 
-"<page> <id> 1233323 </id> <title> department </title> <text> brown computer young university </text> </page>"]
+coll = []
 # if phrase query termsOnly=False, else True
-for page in pages:
-    createIndex(page, invertedIndex, termsOnly=False)
+
+with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\test.txt', 'r', encoding='utf8') as f:
+    d = f.read().replace('\n', ' ')
+
+    article = re.findall('<page> (.*?) </page>', d, re.DOTALL)
+    for page in article:
+        createIndex(page, invertedIndex, False)
 
 writeIndexToFile(invertedIndex)
