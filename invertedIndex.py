@@ -1,6 +1,7 @@
 from porterStemmer import PorterStemmer
 import re
 from collections import defaultdict
+import pickle
 
 '''
 1) Concatenate the title and the text of the page.
@@ -175,4 +176,6 @@ with open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\test.
     for page in article:
         createIndex(page, invertedIndex, False)
 
-writeIndexToFile(invertedIndex)
+afile = open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\idx.txt', 'wb')
+pickle.dump(invertedIndex, afile)
+afile.close()
