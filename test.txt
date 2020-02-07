@@ -1,0 +1,489 @@
+<page>
+<id>19</id>
+<title>10PASS-TS</title>
+<text>{{external links|date=January 2011}}
+
+'''10PASS-TS''' is an [[IEEE 802.3-2008]] Physical Layer ([[PHY]]) specification for a [[full-duplex]] short reach [[Point-to-point communication (telecommunications)|point-to-point]] [[Ethernet]] link over [[voice-grade copper]] wiring. 2BASE-TL is used in [[Ethernet in the first mile]] applications.
+
+10PASS-TS PHYs deliver a minimum of 10 [[Mbit/s]] over distances of up to {{convert|750|m|ft}}, using [[ITU-T]] [[G.993.1]] ([[VDSL]]) technology over a single copper pair. These PHYs may also support an optional aggregation or bonding of multiple copper pairs, called [[PME Aggregation Function]] (PAF).
+
+Unlike [[10BASE-T]], [[100BASE-T]] and [[1000BASE-T]] PHYs, providing a single rate of 10, 100 or 1000 Mbit/s respectively, 10PASS-TS link rate can vary, depending on the copper channel characteristics, such as length, wire diameter ([[American wire gauge|gauge]]), number of pairs if the link is aggregated etc.
+
+== 10PASS-TS Equipment Manufacturers ==
+*Extreme Copper, Inc. (http://www.extremecopper.com)
+
+==10PASS-TS Chip Vendors==
+* Broadcom (http://www.broadcom.com)
+* Lantiq (http://www.lantiq.com)
+* Ikanos (http://www.ikanos.com)
+
+==See also==
+* [[Ethernet in the First Mile]]
+* [[PME Aggregation Function]]
+* [[2BASE-TL]]
+
+==External links==
+*[http://standards.ieee.org/getieee802/802.3.html Get IEEE 802.3] - "IEEE Standard for Information technology - Telecommunications and information exchange between systems - Local and metropolitan area networks - Specific requirements - Part 3: Carrier Sense Multiple Access with Collision Detection (CSMA/CD) Access Method and Physical Layer Specifications", IEEE Std 802.3-2008, November 2008.
+*[http://www.ieee802.org/3/ah/ IEEE 802.3ah] - Ethernet in the First Mile Task Force archive
+
+
+{{compu-network-stub}}
+
+[[Category:Ethernet]]
+[[Category:Bonding protocols]]
+[[Category:Network protocols]]
+[[Category:Physical layer protocols]]
+
+[[fr:10PASS-TS]]</text>
+</page>
+<page>
+<id>26</id>
+<title>12th Computer Olympiad</title>
+<text>The '''12th [[Computer Olympiad]]'''  was held in [[Amsterdam]], [[The Netherlands]] in conjunction with the 15th [[World Computer Chess Championship]] and Computer Games Workshop 2007 (CGW2007).
+SARA Computing and Networking Services and NCF
+[[IBM]],  (Foundation of National Computing Facilities) are enabling the organization of the Computer Games Workshop 2007 (CGW2007) (15-17 June 2007), the 15th World Computer-Chess Championship (WCCC) (11-18 June) and the 12th Computer Olympiad (CO) (11-18 June) was held in Amsterdam, The Netherlands.
+
+Location: CGW2007 (The Turing hall - Z011), WCCC (Eulerzaal – Z009) and Computer Olympiad (Newtonzaal – Z010) , Science Park Amsterdam, Kruislaan 413, 1098 SJ Amsterdam.
+
+==Medals Awarded==
+
+[[Game of the Amazons|Amazons]] (2 participants)
+# 8 Queens Problem (Johann de Koning) (NL)
+# Campya (Julien Kloetzer) (FRA)
+
+[[Backgammon]] (3 participants)
+# Bgblitz (Frank Berger) (DEU)
+# [http://www.gnu.org/software/gnubg/ GNU Backgammon]
+# MCgammon (Guillaume Chaslot, François van Lieshout) (BEL)
+
+[[Chinese Chess]] (5 participants)
+# NeuChess (Jiao Wang) (CHN)
+# Shiga (Ming-Cheng Cheng, Shi-Jim Yen) (TWN)
+# XieXie (Pascal Tang, Eugenio Castillo, Jih Tung Pai) (FRA)
+
+[[Connect6]] (4 participants)
+# X6 (alsdkfjiwen-Liou, Shi-Jim Yen) (TWN)
+# MeinStein (Theo van der Storm) (NL)
+# Kavalan (Shi-Jim Yen) (TWN)
+
+[[International draughts]] (7 participants)
+# Dam 2.2 (Harm Jetten) (NL)
+# TDKing (Ton Tillemans) (CHE)
+# Sjende Blyn (Jelle Wiersma) (NL)
+
+[[Go (board game)|Go]] 19×19 (8 participants)
+# [http://www.lri.fr/~gelly/MoGo.htm MoGo] (Sylvain Gelly, Yizao Wang) (FRA)
+# [http://remi.coulom.free.fr/CrazyStone Crazy Stone] (Rémi Coulom) (FRA)
+# [[GNU Go]]
+
+[[Go (board game)|Go]] 9×9 (10 participants)
+# Steenvreter (Erik van der Werf) (NL)
+# [http://www.lri.fr/~gelly/MoGo.htm MoGo] (Sylvain Gelly) (FRA)
+# [http://remi.coulom.free.fr/CrazyStone Crazy Stone] (Rémi Coulom) (FRA)
+
+[[Shogi]] (3 participants)
+# Tacos (Jun Nagashima, Hiroyuki Iida, Hashimoto Tsuyoshi) (JPN)
+# Reiki (Satoshi Todoroki) (JPN)
+# HIT+SS (Shohei Seike, Takeshi Ito, Ryosuke Ohguchi) (JPN)
+
+[[Go variants#Shadow Go|Phantom Go]] (2 participants)
+# GoLois (Tristan Cazenave) (FRA)
+# InTheDark (Joris Bosboom) (NL)
+
+[[Surakarta (game)|Surakarta]] (2 participants)
+# SIA (Mark Winands) (NL)
+# Incognito (Irmin Auwerda) (NL)
+
+==External links==
+* [http://www.grappa.univ-lille3.fr/icga/event.php?id=40 Official home page]
+* [http://www.cs.unimaas.nl/CGW2007/ Computer Games Workshop]
+
+[[Category:Computer olympiads]]</text>
+</page>
+<page>
+<id>33</id>
+<title>18-bit</title>
+<text>{{nofootnotes|date=October 2009}}
+{{N-bit|18|(2.25 [[octets]])}}
+
+18 binary digits have {{val|262144}} (1000000 [[octal]], 40000 [[hexadecimal]]) unique combinations.
+
+==Example 18-bit computer architectures==
+* Possibly the most well-known 18-bit computer architectures are the [[PDP-1]], [[PDP-4]], [[PDP-7]], [[PDP-9]] and [[PDP-15]] [[minicomputer]]s produced by [[Digital Equipment Corporation]] from 1960 to 1975.
+* [[UNIVAC]] produced a number of 18-bit computers, including the [[UNIVAC 418]] and several military systems.
+* The [[IBM 7700 Data Acquisition System]] was an 18-bit computer.
+* The [[BCL Molecular]]
+
+==References==
+* [http://research.microsoft.com/Users/gbell/Digital/timeline/18-bit.htm DIGITAL Computing Timelime: 18-bit architecture]
+* [http://simh.trailing-edge.com/docs/architecture18b.pdf ''Architectural Evolution in DEC’s 18b Computers''], Bob Supnik, 2006.
+
+[[Category:Computer data]]
+
+{{CPU technologies}}
+
+[[ms:18-bit]]
+[[ja:18ビット]]
+[[pl:Architektura 18-bitowa]]
+[[pt:18 bits]]</text>
+</page>
+<page>
+<id>53</id>
+<title>2-XL</title>
+<text>{{for|the Estonian band formerly known as 2XL|Soul Militia}}
+'''2-XL''' was an educational toy in the shape of a [[robot]] that was introduced in [[1978]]. 2-XL was the  brainchild of  Dr. [[Michael J. Freeman]], who felt that toys should be both fun and educational. The toy was interactive, playing various tracks from a magnetic audio tape depending on the user's actions.
+
+The toy was released in two different time periods. The 1978 release was produced by a toy company called [[Mego Corporation]], and used [[Stereo 8|8-track]] tapes. It was brought back in [[1992]] by [[Tiger Electronics]] in a version that used [[Compact audio cassette|cassette tapes]] rather than 8-Track.
+
+==Mego Corporation version==
+===Description===
+[[Image:2-XL.jpg|thumb|right|250px|Mego Corporation's 2-XL circa 1978]]
+The original 2-XL (see image to right) was made of hard brown plastic, with white plastic on the front. 
+
+The toy had two yellow light bulbs for eyes that flashed at various moments while the 8-track program tapes played, and he had four red push buttons on his stomach:
+*"Question" 
+*"A or Yes Or True"
+*"B or More Info" 
+*"C or No or False"
+
+There was also a volume and power on knob found on the lower right portion of the unit. At the bottom was a large slot where an 8-Track tape would be inserted.
+
+The toy was essentially a regular 8-Track player, with each button operating a different track.  It was powered by a common 9-volt AC adapter with a 3.5 mm mini-plug tip. 
+
+===Development===
+Michael J. Freeman had a hard time convincing companies of the benefits that his toy would provide. Many companies turned down the idea, saying it was just too expensive and not practical to invest so much into an educational toy when kids are typically reluctant to buy educational items. Finally, Mego Corporation decided that it fit in well with their company. They were makers of action figures based on popular TV shows, many of which were [[sci-fi]] related. 
+
+Freeman was involved with all phases of the toy's development, including how the internal mechanism worked. The Mego version of 2-XL was produced for four years, 1978–1981.  
+
+The mold and look got a minor change in [[1980]]:
+*The eye lights became red
+*The louder the volume was turned, the brighter the lights would flash
+*The speaker in the back of the unit was changed from a hexagon shape to a more traditional round speaker shape. 
+*The plastic was shiner and glossier looking
+
+All told there were about 50 program tapes made for the Mego 2-XL.  It was highly popular in its first years, but it faded into obscurity after the turn of the decade. The toy will often show up on auction sites and in used toy stores. They aren't rare by any means, but aren't in mass quantities either. Some of the tapes can be harder to find; the last year tapes are rarer due to the decreased popularity of the toy in its last year on the market.
+
+===Programs===
+The 8-Track tapes focused around a robot with a [[New York]] accent, (voiced by creator Dr. Michael J. Freeman Ph.D. himself) who would speak as if the listener was right there with him wherever he happened to be in the storyline. He would ask multiple-choice questions based on the subject of the tape, and the user would answer the question he asked by pushing the corresponding button.  A right answer resulted in 2-XL congratulating the user on his knowledge, while a wrong answer would result in a razzing as 2-XL explained what the proper answer was. In between questions, there would sometimes be a story going on that the user was involved with, with the answers to the questions corresponding to the storyline. Other times 2-XL would crack a bad joke and laugh at his own humor with a crazy-sounding laugh that was one of the many running gags that would be found on almost every tape in the series.
+
+Originally the programs were very basic. There was just one general story line.  Each track flowed through the same time length, differing only by telling the user if he was right or wrong.  Eventually, Dr. Freeman started to take advantage of the four tracks found on a tape to have up to three different programs on one tape. 
+
+There were some general themes to each tape. The first was 2-XL's bleeping and buzzing sound effects as it turned on, as if the user was activating a huge robot (although he would often refer to its size as only a foot or so tall). He would always introduce himself in the same way, saying, "Thank you for turning me on. I am 2-XL..." . The voice did not sound robotic, and was pretty much Michael's voice only a bit slower speaking and more sophisticated sounding. There would always be a moment where the user had to push the Question button, as that went back to track one, which is where the main talking took place. There was always music or beeping sounds while the user would think, or while the new questions were loading, to make the program space out properly. Towards the end of the tape 2-XL would give the user a warning that he was getting tired and that it was time to wrap things up with one last question.  He was always very friendly and acted very human, as if he was a new buddy that wanted to help the user learn in the most enjoyable way possible.  His humor was silly as were his wisecracks, but the same themes were found throughout the various tapes, getting more and more creative as the future tapes were introduced. He would often say "Please turn me off now" and often relate the reason he had to go somehow to the topic of the tape. 
+
+<!-- Deleted image removed: [[Image:2-XLtapes.JPG|thumb|right|250px|Eight of Mego Corporation's 2-XL 8-Track Tapes]] -->
+2-XL came with one tape, titled "General Information", which touched on various topics such as sports, movies, and pop culture. Each of the various other program tapes was sold separately and most came with a separate activity book that could be used as well while doing the activity with 2-XL. Some also came with faceplate cards that could be placed over the various buttons that had different words on them that were specifically to be used for that certain program tape. Not all of the tapes were educational, some told stories that the user would just listen to able to answer a few questions about them afterwards. Not all tapes were focused around 2-XL either. Other voices would appear on them depending on what the focus of each tape was. But somewhere 2-XL's voice would show up to keep everything in the same universe. There were also two-tape sets that would continue on with the theme of the first tape after the user finished it.
+
+==Tiger Electronics version==
+[[Image:2-xltiger.JPG|thumb|right|250px|Tiger Electronic's version of 2-XL along with some program cassette tapes circa 1992]]
+
+In 1992, Tiger Electronics re-introduced 2-XL. Instead of 8-track tapes, the new version used cassette tapes that were twice the length of the 8-tracks and had better sound quality. Freeman again provided the toy's voice. In addition to eyes that would light up, the toy now sported a circle for a mouth that could light up as he talked. The toy could now run on batteries and had a headphone jack.
+
+Instead of the buttons simply switching tracks on the 8-track tape as in the old version, the cassette version took advantage of the fact that a cassette has a total of four tracks - one for the left and right channel on each side. The tape head in the player could play any of the four parallel tracks, based on which button was pressed. Playing a 2-XL tape in a standard tape player would result in different audio on the left and right channels, and if the reverse side was played (which was typically marked with the words "Wrong Side"), one would hear the other two tracks played in reverse.
+
+As with the previous version, the cassette version could play any standard cassette tape, but the user needed to first push the "Question" button (or the "2/A/No" button would work as well, playing the right channel). Pressing the 3 or 4 button would play one of the channels on the reverse side of the tape backwards.
+
+[[Image:2-XLx-men casette.jpg|thumb|right|125px|Tiger Electronic's X-Men Cassette Adventure tape for the 2-XL toy.]]
+Newly released tapes were branded with comic book and cartoon characters, including [[Spider-Man]], [[Star Trek: The Next Generation]], [[Mighty Morphin Power Rangers]], [[X-Men]] and [[Batman]]. 2-XL games would allow the user to go on an adventure with various superheroes, deciding their fate by pushing one of the buttons.
+
+The second version was on the market from 1992 through 1994, and about 45 tapes were released in total. The final inventory was sold in 1995 bundled with the Power Rangers tape. It was one of the most popular toys, in terms or market revenue, sold up through 1995. 
+
+This version of 2-XL got even more exposure due to it being used on a kids TV Game Show at the time named "[[Pick Your Brain]]". A 10-foot replica of the Tiger Electronics 2-XL was used on the set to ask questions and offer extra information on the topic being talked about. Freeman was asked to do the voice of 2-XL but declined. The show was hosted by [[Marc Summers]] and 2-XL on this show was voiced by [[Greg Berg]]. This show had a high success in its first year, but was ended when the production of 2-XL ceased.
+
+==Tri-Lex==
+
+One of the last tapes released for the Mego Corporation version of 2XL was "Tri-Lex", a complete board game designed to be played by 2XL.  The tape came with a board which fitted over the front of the 2XL unit itself, with the board in front of the tape slot.  The game board consisted of an inverted pyramid shape, 4 squares wide at the top to 1 square at the bottom, with each row coloured in a different colour (Blue, Yellow, Green, and Tan), and 4 slots through which pieces (which 2XL called "checkers") could be dropped into the pyramid.  The slots aligned with 2XL's 4 buttons, with the intention that dropping the checker would also press the appropriate track button on 2XL.  The objective of the game was to create either a line or a triangle of 3 checkers of your own colour.  The game and tape design are interesting because they enabled the 4-track tape player to provide a passable simulation of a game-playing AI.
+
+Several "tricks" had to be used: an additional set of "front" slots that did not interact with the buttons were provided, and 2XL occasionally told the player to "make a move in the front" so that the track would not change.  2XL would also ask the player to "remember a codeword" at certain points in the game, and to repeat it back later.  Often the game would end before the tape did, meaning that 2XL would prompt the player with "please turn my volume down to zero", after which the player would have to wait for the remainder of the current game's recording to wind through before a track-changing "click" signalled they should turn the volume back up.  (For this reason, Tri-lex was the only 2XL tape that did not say "thank you for turning me on" at the start, since the player was expected to play several games in a single session.)  Finally, although the tape appears to loop after one game, it in fact has four games recorded on it.  
+
+The game itself is easily solved, and correctly played always ends in a win for the starting player.  The tape was thus more valuable for teaching pattern recognition than as a genuine board game.  On the tape, the player can in fact beat 2XL, but only on two of the recorded games (those where the human player goes first).  The player can defeat 2XL by using the guaranteed win, or - on occasion - by using other strategies where 2XL "makes a mistake".  2XL does not use the guaranteed win strategy against human players.  
+
+The guaranteed win is as follows: first player plays Tan (forced, only space available), second player plays Green 1/2 (forced, only spaces available - which one does not matter, as the ensuing positions are mirror images of each other; continue following the moves on the appropriate side of the /), first player plays Green 2/1, second player plays Yellow 3/1 (forced, else first player plays it and wins with a line), first player plays Yellow 2, second player plays Blue (3 or 4)/(1 or 2), first player plays Blue (4 or 3)/(2 or 1) (forced, else second player plays it and wins with a triangle), second player plays Yellow 1/3 (forced, only space available), first player plays Blue 2/3 and wins with a line of three.
+
+==Similar Toys==
+===Kasey the Kinderbot===
+Kasey the Kinderbot was a toy designed by Dr. Freeman which was targeted at kids aged 3–7.  Instead of tapes as with the previous versions, this toy used small cartridges that were not linear - the user was able to jump around to various sections at will. It was purely an educational toy with cartridges focusing on such subjects as Math, Science and languages. The cartridges were also color coded to let kids know what group of subject it belonged to. The toy was first released in 2002 by [[Fisher-Price]]. It produced a total profit of over $70 million. Spin-off characters included ''Toby the Totbot'', which focused specifically on teaching letters and numbers, and ''Fetch the Phonicsbot'' which was a dog-shaped robot holding a letter board which was aimed at the toddler age group.
+
+==See also==
+*[[Talk 'n Play]], a children's cassette player that also used the four audio tracks for "interactivity" with cassette/book sets
+
+==External links==
+*[http://www.2xlrobot.com/ World of 2-XL] An extensive source on anything regarding 2-XL and its inventor, Dr. Michael J. Freeman.
+*http://www.pickletreats.com/2XL/  Unofficial 2-XL Page
+*[http://www.donationcoder.com/Software/Mouser/2XL/index.html 2-XL Simulator] An online web simulator with dozens of the original cartridges.
+*[http://www.google.com/patents/about?id=JzUvAAAAEBAJ&dq=michael+freeman} The original patent, retrieved from Google patents.
+
+
+[[Category:Educational toys]]
+[[Category:1978 introductions]]
+[[Category:Toy robots]]
+
+[[bg:2-XL]]
+[[it:2-XL]]</text>
+</page>
+<page>
+<id>54</id>
+<title>2-choice hashing</title>
+<text>{{orphan|date=December 2008}}
+'''2-choice hashing''', also known as '''2-choice chaining''', is a variant of a [[hash table]] in which keys are added by hashing with two [[hash function]]s. The key is put in the array position with the fewer (colliding) keys. Some [[collision resolution scheme]] is needed, unless keys are kept in buckets. The [[average-case cost]] of a successful search is [[Big O notation|O(2 + (m-1)/n)]], where m is the number of keys and n is the size of the array. The most collisions is <math>\log_2 \ln n + \theta(m/n)</math> with high probability.
+
+==See also==
+*[[2-left hashing]]
+
+{{DADS|2-choice hashing|twoChoiceHashing}}
+
+[[Category:Hashing]]</text>
+</page>
+<page>
+<id>59</id>
+<title>20-GATE</title>
+<text>'''20-Gate''' is an [[algebra]]ic [[programming language]] developed at [[Carnegie Mellon University]] around 1965, for the [[Bendix G-20]] computer.
+
+==External links==
+*[http://hopl.murdoch.edu.au/showlanguage.prx?exp=216 HOPL entry]
+
+{{Computer algebra systems}}
+
+{{FOLDOC}}
+
+[[Category:Computer algebra systems]]
+
+
+{{compu-lang-stub}}
+
+[[hr:20-GATE]]
+[[ms:20-GATE]]
+[[sr:20-GATE]]</text>
+</page>
+<page>
+<id>71</id>
+<title>24-bit</title>
+<text>{{for|24-bit color model in digital images|Truecolor}}
+{{Unreferenced|date=October 2009}}
+{{N-bit|24|(3 octets)}}
+
+The IBM [[System/360]], announced in 1964, was a popular computer system with 24-bit addressing and [[32-bit]] general registers and arithmetic.  The early 1980s saw the first popular personal computers, including the IBM [[PC/AT]] with an Intel [[80286]] processor using 24-bit addressing and 16-bit general registers and arithmetic, and the [[Apple Inc.|Apple]] [[Macintosh 128k]] with a Motorola [[68000]] processor featuring 24-bit addressing and 32-bit registers. The [[eZ80]] is a microprocessor and microcontroller with 24-bit registers and addressing that is binary compatible with the 8/16-bit [[Z80]].
+
+{{CPU technologies}}
+
+{{DEFAULTSORT:24-Bit}}
+
+[[es:24 bits]]
+[[ko:24비트]]
+[[ms:24-bit]]
+[[ja:24ビット]]
+[[pl:Architektura 24-bitowa]]
+[[pt:24 bits]]</text>
+</page>
+<page>
+<id>75</id>
+<title>26-bit</title>
+<text>{{N-bit|26|}}
+
+In the [[ARM Limited|ARM]] [[ARM_architecture|processor architecture]], '''26-bit''' refers to the design used in the original ARM processors, where the [[Program Counter]] ('''PC''') and [[Status_register|Processor Status Register]] ('''PSR''') were combined into one 32-bit [[Processor_registers|register]] (R15), the status flags filling the high 6 bits and the Program Counter taking up the lower 26 bits.
+
+In fact, because the program counter is always word-aligned the lowest two bits are always zero which allowed the designers to reuse these two bits to hold the processor's mode bits too. The four modes allowed were USR26, SVC26, IRQ26, FIQ26; contrast this with the 32 possible modes available when the program status was separated from the program counter in more recent [[ARM Architecture|ARM architectures]].
+
+This design enabled more efficient [[Computer_program|program]] execution, as the Program Counter and status flags could be saved and restored with a single operation. This resulted in faster [[subroutine]] calls and [[interrupt]] response than traditional designs, which would have to do two register loads or saves when calling or returning from a subroutine.
+
+==History==
+
+Despite being [[32-bit]] internally, processors prior to the ARM6 had only a 26-bit PC and [[address bus]], and were consequently limited to 64 MB of addressable [[Random_Access_Memory|memory]]. This was still a vast amount of memory at the time, but because of this limitation, architectures since have included various steps away from the original 26-bit design.
+
+The ARM6 introduced a 32-bit PC and separate PSR, as well as a 32-bit address bus, allowing 4 GB of memory to be addressed. The change in the PC/PSR layout caused incompatibility with code written for previous architectures, so the processor also included a 26-bit compatibility mode which used the old PC/PSR combination. The processor could still address 4 GB in this mode, but could not [[Execution_(computers)|execute]] anything above address 3FFFFFC (64 MB). This mode was used by [[RISC OS]] running on the [[Risc_PC|Acorn Risc PC]] to utilise the new processors while retaining compatibility with existing software.
+
+More recent ARM architectures such as [[Intel]]'s [[XScale]] have dropped the 26-bit mode altogether.
+
+==External links==
+*[http://web.archive.org/web/20070809230809/http://www.arm.com/pdfs/Apps11vC.html Differences Between ARM6 and Earlier ARM Processors]
+*[http://www.iyonix.com/32bit/download/32bit_dev.pdf "Using the Acorn C/C++ Development Environment to write 32-bit RISC OS software"] - Details on the architectural changes and converting code between 26-bit and 32-bit.
+* http://www.heyrick.co.uk/assembler/32bit.html - Information on converting assembler to 32-bit
+
+[[Category:ARM architecture]]</text>
+</page>
+<page>
+<id>101</id>
+<title>360voice</title>
+<text>{{Infobox Website
+| name           = 360voice.com
+| logo           = 
+| screenshot     = 
+| caption        = 
+| url            = http://360voice.gamerdna.com/
+| alexa          = 18,503
+| commercial     = No
+| type           = [[Blog publishing system|Blog host]]
+| language       = English
+| registration   = Optional (free) to view blogs / required (free) to obtain a blog
+| owner          = [[GamerDNA|GamerDNA Inc.]]
+| author         = Trapper Markelz and Steve Sopp
+| launch date    = April 17, 2006
+| current status = active
+| revenue        = 
+| slogan         = Give your [[Xbox 360|Xbox]] its own blog
+}}
+
+'''360voice''' is a website where gamers can read or subscribe via [[RSS]] to a [[blog]] about what their friends are doing every day on [[Xbox Live]], including tracking gameplay and issuing [[gamerscore]] challenges.  It is the major product of It Can Talk Systems Inc., a company founded by Trapper Markelz and Steve Sopp in 2006.<ref>{{cite web |url=http://thexboxdomain.com/2006/05/25/360voicecom-interview/ |title=Xbox Domain Interview |author= |date=May 2006 |work= |publisher= |accessdate= }}</ref><ref>{{cite web |url=http://kotaku.com/gaming/xbox-360/give-your-xbox-360-its-own-blog-170510.php |title=Kotaku |author=Brian Crecente |date=April 27, 2006 |work= |publisher= |accessdate= }}</ref>  For example, one may view all the games played by Xbox Live director [[Larry Hryb]] (better known as "Major Nelson") on his 360voice blog.<ref>{{cite web |url=http://360voice.gamerdna.com/tag/Major%20Nelson |title=Major Nelson's Xbox Blog |author= |date= |work= |publisher= |accessdate=14 September 2010}}</ref> It has been recognized as part of a new trend in technology where inanimate objects acquire the ability to blog about their owners' activities.<ref>{{cite web |url=http://www.washingtonpost.com/wp-dyn/content/article/2006/08/30/AR2006083003009.html |title=When the Machines Talk, They Talk About You |author=Mike Musgrove |date=August 31, 2006 |work= |publisher=[[Washington Post]] |accessdate= }}</ref>
+
+== Experience Challenge ==
+
+360voice has been the home to advertising programs such as the [[Old Spice]] Experience Challenge, and has been recognized as part of a trend within [[advertising]] to depart from standard media buys and focus on associating brands with online activities that an audience are participating in.<ref>{{cite web |url=http://www.adweek.com/aw/search/article_display.jsp?vnu_content_id=1003683965 |title=Old Spice Seeks Gaming Experience |author=Brian Morrissey |date=December 11, 2007 |work= |publisher=[[Adweek]] |accessdate= }}</ref>
+
+== Acquisition by GamerDNA ==
+
+In April 2008, the company was acquired by [[GamerDNA]] under undisclosed terms.<ref>{{cite web |url=http://www.masshightech.com/stories/2008/04/28/daily8-GamerDNA-buys-360voice.com-parent.html |title=Mass High Tech |author= |date=April 28, 2008 |work= |publisher= |accessdate= }}</ref><ref>{{cite web |url=http://www.bizjournals.com/boston/stories/2008/04/28/daily5.html |title=GamerDNA makes acquisition |author= |date=April 28, 2008 |work= |publisher=[[Boston Business Journal]] |accessdate= }}</ref><ref>{{cite web |url=http://www.xconomy.com/2008/04/28/gamerdna-targets-xbox-community/ |title=GamerDNA Targets Xbox Community |author=Wade Roush |date= |work= |publisher=Xconomy |accessdate= }}</ref> In December 2008, the domain name of 360voice.com<ref>{{cite web |url=http://www.360voice.com/ |title=The latest from the Dev Blog |author= |date= |work= |publisher= |accessdate=14 September 2010}}</ref> was moved to 360voice.gamerdna.com.<ref>{{cite web |url=http://360voice.gamerdna.com/ |title=The latest from the Dev Blog |author= |date= |work= |publisher= |accessdate=14 September 2010}}</ref> Any links pointing to the old domain (www.360voice.com) still work and will redirect to 360voice.gamerdna.com.<ref>{{cite web | url = http://blog.360voice.com/2008/12/domain-name-change-360voicegamerdnacom.html | title = Domain name change: 360voice.gamerdna.com | first = Trapper | last = Markelz | date = 2008-12-03 | accessdate = 2008-12-11 }}</ref>
+
+==References==
+{{Reflist}}
+
+==External links==
+* [http://360voice.gamerdna.com/ 360voice.gamerdna.com]
+* [http://blog.360voice.com/ Development blog]
+[[Category:Companies established in 2006]]
+[[Category:Social network services]]
+[[Category:Virtual communities]]
+[[Category:Video game companies of the United States]]
+[[Category:Internet properties established in 2006]]
+[[Category:Companies based in Massachusetts]]</text>
+</page>
+<page>
+<id>104</id>
+<title>386BSD</title>
+<text>{{Distinguish2|[[BSD/386]], the commercial Unix sold by BSDi}}
+{{Infobox OS
+| name                   = 386BSD
+| logo                   =
+| screenshot             = [[File:386BSD installer screenshot.png|250px]]
+| caption                = 386BSD Release 0.1 installer ("Tiny 386BSD")
+| website                = http://www.386bsd.org/
+| developer              = [[William Jolitz]]<br />[[Lynne Jolitz]]
+| family                 = [[Unix-like]]
+| source_model           = [[Open source]]
+| latest_release_version = 1.0
+| latest_release_date    = November 1994
+| latest_test_version    =
+| latest_test_date       =
+| marketing_target       =
+| language               =
+| kernel_type            =
+| ui                     =
+| license                = [[BSD license]]
+| working_state          = Historical
+| supported_platforms    = [[x86 architecture|x86]]
+}}
+'''386BSD''', sometimes called "'''Jolix'''"<ref name="foldoc">{{cite web|url=http://foldoc.org/jolix|title=386BSD|date=2006-06-08|work=[[Free Online Dictionary of Computing]]|accessdate=2009-11-17}}</ref>, was a [[Free software|free]] [[Unix-like]] [[operating system]] based on [[Berkeley Software Distribution|BSD]], first released in 1992. It ran on [[PC compatible]] computer systems based on the [[Intel 80386]] [[microprocessor]]. 386BSD innovations include [[role-based security]], [[ring buffer]]s, self-ordered configuration and [[Loadable kernel module|modular kernel]] design.
+
+== History ==
+
+386BSD was written mainly by Berkeley alumni [[Lynne Jolitz]] and [[William Jolitz]]. William Jolitz had considerable experience with prior BSD releases while at the University of California at Berkeley (2.8 and 2.9BSD) and both contributed code to Berkeley developed at [[Symmetric Computer Systems]] during the 1980s. Work on porting 4.3BSD-Reno and later 4.3BSD Net/2 to the Intel 80386 was done for the University of California by William Jolitz at Berkeley. 4.3BSD Net/2 was an incomplete non-operational release, with portions withheld by the University of California as ''encumbered'' (i.e. subject to an [[AT&T UNIX]] [[source code]] license). The 386BSD releases made to the public beginning in 1992 were based on portions of the 4.3BSD Net/2 release coupled with additional code (see ''Missing Pieces I and II'', [[Dr. Dobb's Journal]], May–June 1992) written by William and Lynne Jolitz to make a complete operational release.
+
+The port began in 1989 and the first, incomplete traces of the port can be found in 4.3BSD Net/2 of 1991. It was first released in March 1992 (version 0.0) and in a much more usable version on July 14, 1992 (version 0.1). The porting process with code was extensively documented in an 18-part series written by Lynne Jolitz and William Jolitz in [[Dr. Dobbs Journal]] beginning in January 1991.
+
+===FreeBSD and NetBSD===
+After the release of 386BSD 0.1, a group of users began collecting bug fixes and enhancements, releasing them as an unofficial ''[[patch (computing)|patchkit]]''. Due to differences of opinion between the Jolitzes and the patchkit maintainers over the future direction and release schedule of 386BSD, the maintainers of the patchkit founded the [[FreeBSD]] project in 1993 to continue their work<ref>[http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/history.html About the FreeBSD Project<!-- Bot generated title -->]</ref>. Around the same time, the [[NetBSD]] project was founded by a different group of 386BSD users, with the aim of unifying 386BSD with other strands of BSD development into one multi-platform system. Both projects continue to this day.
+
+===Lawsuit===
+Due to a lawsuit ([[Unix System Laboratories|USL]] v. Regents of the University of California), some potentially so-called ''encumbered'' source was agreed to have been distributed within the [[Berkeley Software Distribution]] from the University of California, and a subsequent release (1993, 4.4BSD-Lite) was made by the University to correct this issue. However, 386BSD, Dr. Dobbs Journal, and William Jolitz and Lynne Jolitz were never parties to these or subsequent lawsuits or settlements arising from this dispute with the University of California, and continued to publish and work on the 386BSD code base before, during, and after these lawsuits without limitation. There has never been any legal filings or claims from the University, USL, or other responsible parties with respect to 386BSD. Finally, no code developed for 386BSD done by William Jolitz and Lynne Jolitz was at issue in any of these lawsuits.
+
+==Release 1.0==
+In late 1994, a finished version 386BSD Release 1.0 was distributed by Dr. Dobb's Journal on CDROM only due to the immense size (600 [[megabyte|MB]]) of the release (the ''"386BSD Reference CD-ROM"'') and was a best-selling CDROM for three years (1994–1997). 386BSD Release 1.0 contained a completely new kernel design and implementation, and began the process to incorporate recommendations made by earlier Berkeley designers that had never been attempted in BSD.
+
+==Relationship with BSD/386==
+386BSD is often confused with [[BSD/386]] which was developed by [[Berkeley Software Design|BSDi]], a Berkeley spinout, starting in 1991. BSD/386 used the same 386BSD code contributed to the University of California on ''4.3BSD NET/2''. Although Jolitz worked briefly for [[UUNET]] (which later spun out BSDi) in 1991, the work he did for them diverged from that contributed to the University of California and did not appear in 386BSD. Instead, William Jolitz gave regular code updates to Donn Seeley of BSDi for packaging and testing, and returned all materials when William Jolitz left that company following fundamental disagreements on company direction and goals.
+
+==Copyright and use of the code==
+All rights with respect to 386BSD and JOLIX are now held exclusively by William Jolitz and Lynne Jolitz. 386BSD public releases ended in 1997 since code is now available from the many 386BSD-derived [[operating system]]s today, along with several derivatives thereof (such as [[Apple Computer|Apple]]'s [[Darwin (operating system)|Darwin]] and  [[OpenBSD]]). Portions of 386BSD may be found in other open systems such as [[OpenSolaris]]. 386BSD is available for research (non-commercial) purposes.
+
+==References==
+{{No footnotes|date=July 2009}}
+{{Portal|Free software}}
+<references/>
+
+==Further reading==
+* Jolitz, William F. and Jolitz, Lynne Greer: Porting UNIX to the 386: A Practical Approach, 18-part series in Dr. Dobbs Journal, January 1991 - July 1992.
+* Jolitz, William F. and Jolitz, Lynne Greer: Operating System Source Code Secrets Vol 1 The Basic Kernel, 1996, ISBN 1-57398-026-9
+* Jolitz, William F. and Jolitz, Lynne Greer: Operating System Source Code Secrets Vol 2 Virtual Memory, 2000, ISBN 1-57398-027-7
+
+==External links==
+* [http://www.386bsd.org www.386bsd.org : Information by William and Lynne Jolitz]
+* [http://porting-unix-to-the-386.jolix.com/ Porting UNIX to the 386: A Practical Approach]
+* [http://porting-unix-to-the-386.jolix.com/designing-the-software-specification Designing the Software Specification]
+* [http://porting-unix-to-the-386.jolix.com/three-initial-pc-utilities Three Initial PC Utilities]
+* [http://william.telemuse.net William Jolitz]
+* [http://lynne.telemuse.net Lynne Jolitz]
+* [http://jolitz.telemuse.net/2lgj/on386bsd Memories of 386BSD releases by Lynne Jolitz]
+* [http://archive.salon.com/tech/feature/2000/05/17/386bsd/index.html The unknown hackers - Salon.com]
+* [http://minutepitch.valux.com/386bsddesign 386BSD Design Notes Professional Video Series]
+* [http://www.386bsd.org/faq Frequently asked questions of 386BSD - active Q/A by authors]
+* [http://www.jolix.com www.jolix.com]
+* [http://cm.bell-labs.com/cm/cs/who/dmr/bsdi/bsdisuit.html Remarks and papers on USL v UC Berkeley by Dennis M. Ritchie.]
+* [http://www.theage.com.au/technology/itnews/yoursay/2003/05/22/#386bsd Remarks on the history of 386BSD by Lynne Jolitz]
+* [http://mail-index.netbsd.org/netbsd-advocacy/2001/01/18/0017.html Remarks on the history of 386BSD by Greg Lehey]
+
+{{DEFAULTSORT:386bsd}}
+[[Category:BSD]]
+[[Category:Free software operating systems]]
+[[Category:Discontinued operating systems]]
+
+[[bs:386BSD]]
+[[de:386BSD]]
+[[fr:386BSD]]
+[[ja:386BSD]]
+[[pl:386BSD]]
+[[ro:386BSD]]
+[[ru:386BSD]]
+[[th:386BSD]]
+[[uk:386BSD]]</text>
+</page>
+<page>
+<id>110</id>
+<title>3Com Audrey</title>
+<text>{{Information appliance
+|title = 3Com Ergo Audrey
+|logo = <!-- Missing image removed: [[Image:3Com logo.png|60px]] -->
+|image = [[Image:Ergo Audrey Original and Custom.JPG|250px|3Com Ergo Audrey]]
+|manufacturer = [[3Com]]
+|type = [[Internet appliance]]
+|connectivity = [[modem]], [[Universal serial bus|USB]]
+|lifespan = October 17, 2000
+|media = 
+|operatingsystem = [[QNX]]-based
+|camera = 
+|input = [[touchscreen]], [[computer keyboard|keyboard]]
+|power = [[Alternating current|AC]] adapter
+|cpu = 200 [[Megahertz|MHz]] [[Geode (processor)|Geode]] GX 1
+|display = 640 &times; 480 resolution
+|touchpad = 
+}}
+The '''3Com Ergo Audrey''' is a discontinued [[internet appliance]] from [[3Com]]. It was released to the public on October 17, 2000 for [[United States dollar|USD]]499 as the first (and only) device in the company's "Ergo" initiative to hit the market.<ref>{{cite web | title=3Com lets Audrey out the door | work=News.com | url= | accessdate=2010-01-15}}</ref> Once connected to an appropriate provider, users could access the [[internet]], send and receive [[e-mail]], play audio and video, and synchronize with up to two [[Palm OS]]-based devices.  
+
+''Audrey'' was the brainchild of Don Fotsch (formerly of Apple Computer and U.S. Robotics) and Ray Winninger. Don and Ray had a vision for a family of appliances, each designed for a specific room in the house. The brand ''Ergo'' was meant to convey that intent, as in "it's in the kitchen, ''[[ergo]]'' it's designed that way"<ref name="ReferenceA">Direct Knowledge - I was there at the time that it was said. - Rob Hudson</ref>. There were plans to serve other rooms in the house as well. They considered the kitchen to be the heart of the home and the control room for the home manager. Don coined the phrase "Internet Snacking" to describe the lightweight web browsing done in this environment<ref name="ReferenceA"/>. 
+
+The name ''Audrey'' was given to this first product to honor [[Audrey Hepburn]]. It was meant to deliver the elegance that she exuded. The project codename was "[[Kojak]]", named after the [[Telly Savalas]] character. The follow-on product targeted for the family room was code named "[[Mannix]]".
+
+3Com discontinued the product on June 1, 2001, in the wake of the [[Dot-com bubble|dot.com crash]], after only seven and a half months on the market. 3Com customers received full refunds for the product and accessories.  The remaining Audrey hardware was liquidated and embraced by the [[hardware hacker]] community.<ref>{{cite web|title=Audrey's life cut short|work=News.com|url=http://news.com.com/2100-1040-254497.html|accessdate=2010-01-15}}</ref>
+
+==Hardware==
+The Audrey is a [[touchscreen]], passive matrix LCD device and came equipped with a [[Stylus (computing)|stylus]].  All applications were touch-enabled.  Since the standard [[infrared]] keyboard was only needed for typing tasks, it could be hung out of the way on the rear of the unit.  The stylus was to be placed in a receptacle on the top of the screen with an [[light-emitting diode|LED]] that flashed when email arrived.  Buttons on the right side of the screen were used to access the web browser, email application, and calendar, and a wheel knob at the bottom selected different "channels" of [[push technology|push]] content.
+
+The 3Com Audrey is powered by a 200 [[Megahertz|MHz]] [[Geode (processor)|Geode]] GX 1 [[Central Processing Unit|CPU]], with 16 [[Megabyte|MB]] of [[flash ROM]] and 32 MB of [[Random access memory|RAM]]. It measures 9 x 11.8 x 3.0 inches (22.86 x 29.97 x 7.62 cm), and weighs 4.1 pounds (1.86 kg). It is powered by the [[QNX]] [[operating system]].  The Audrey is equipped with a [[modem]], two [[Universal Serial Bus|USB]] ports, and a [[CompactFlash]] socket.  A USB [[Ethernet]] adapter was commonly used for [[broadband]] subscribers.
+
+The Audrey was also available in such shades as "linen" (off-white), "meadow" (green), "ocean" (blue), "slate" (grey), and "sunshine" (light yellow).
+
+==Hacking==
+After the demise of official support, the Audrey drew the attention of computer enthusiasts.  They quickly discovered an [[exploit (computer security)|exploit]] to launch a [[pterm]] session.  Using [[privilege escalation]] techniques, the [[superuser|root]] password in the [[Passwd (file)|passwd]] file could be edited, opening the box to further experimentation.
+
+Many of the tools for the [[QNX]] operating system development platform were quickly adapted for use in the Audrey, including an updated web browser ([[Voyager (web browser)|Voyager]]), an MP3 player, digital rotating photoframe, and other applications.<ref>{{cite web|title=3Com Ergo Audrey|work=PC Magazine|url=http://www.pcmag.com/article2/0,1895,34321,00.asp|accessdate=2010-01-15}}</ref>
+
+The CompactFlash slot was also investigated.  Although it could not be used for storage expansion, the Audrey was set to flash its operating system from the slot.  Soon, a variety of replacement OS images were distributed among enthusiasts.  As the device could utilize an optional Ethernet connection, it was an easy task to mount a remote disk drive served up by a neighboring desktop system, thus allowing for virtually unlimited storage capability.
+
+==Similar devices==
+Devices similar to the Audrey included the [[i-Opener]] and [[Virgin Webplayer]].
+
+==References==
+{{reflist}}
+
+{{DEFAULTSORT:3com Audrey}}
+[[Category:Information appliances]]
+[[Category:Internet tablets]]
+[[Category:2000 introductions]]</text>
+</page>
