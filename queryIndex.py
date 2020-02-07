@@ -1,3 +1,5 @@
+import pickle
+
 def queryIndex():
     '''O: inverted index from txt file InvertedIndex.txt'''
     # invertedIndex from txt file
@@ -118,10 +120,10 @@ def phraseQueries(invertedIndex):
         else:
             print('None!')
             return None
-
+    #print(f'IDs {IDs}')
     # IDs of articles in which query occurs
     inter = list(set(intersect(IDs)))
-    print(f'inter {inter}')
+    #print(f'inter {inter}')
     positions = {}
 
     # add positions of terms to positions
@@ -141,7 +143,7 @@ def phraseQueries(invertedIndex):
                 holder.append(i)
         positions[ID] = sorted(list(set(holder)))
 
-    print(f'positions {positions}')
+    #print(f'positions {positions}')
 
     legit = []
 
@@ -150,10 +152,10 @@ def phraseQueries(invertedIndex):
         holder = list(positions[ID])
         #h is a for a test if query is in particular order
         h = []
-        print(f'holder {holder}')
+        #print(f'holder {holder}')
         for ei, elem in enumerate(holder):
             h.append(elem-ei)
-        print(f'h {h}')
+        #print(f'h {h}')
         #if length of terms is equal to number of same numbers in h, query is in the article
         for elem in h:
             if h.count(elem) == len(terms):
@@ -163,6 +165,7 @@ def phraseQueries(invertedIndex):
     return list(set(legit))
 
 
-invertedIndex = queryIndex()
+file2 = open(r'C:\Users\jmsie\Dev\Projects\SearchEngine\search_engine\Include\idx.txt', 'rb')
+new_d = pickle.load(file2)
 
-phraseQueries(invertedIndex)
+phraseQueries(new_d)
